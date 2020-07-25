@@ -101,7 +101,7 @@ include('menubar.php');
         </div>
         <div class="modal-footer">
           
-		 <input type="submit" name="submit" value="Submit" class="button"/>
+		 <button type="submit" name="submit"  class="button"/>Submit</button>
 		 <button type="button" class="button" data-dismiss="modal">Close</button>
 		  </form>
         </div>
