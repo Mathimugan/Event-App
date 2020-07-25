@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
 					$type='admin';	
 					}
 					else{
-					$type='index';	
+					$type='events';	
 					}
 					header("location:".$type."");
 				}
