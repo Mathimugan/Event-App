@@ -26,7 +26,12 @@ include('menubar.php');
 						<article class="content-item">
 							<div class="entry-media">
 								<div class="post-title">
-									<h2>Edit Event</h2>
+									<div class="row">
+								<div class="col-md-2">
+								<a class="button" href="events">Back</a></div>
+								<div class="col-md-10">
+									<h2>Edit Event</h2></div>
+								</div>
 								</div>
 								<div class="bubble-line"></div>
 								<div class="post-content comment">

@@ -18,7 +18,7 @@ include('menubar.php');
 		<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-			<a href="add_event.php" class="button" style="float:right;">Add Event</a>
+			<a href="add_event" class="button" style="float:right;">Add Event</a>
 			</div>
 			</div>
 			<br/>

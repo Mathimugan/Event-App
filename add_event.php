@@ -20,7 +20,11 @@ include('menubar.php');
 						<article class="content-item">
 							<div class="entry-media">
 								<div class="post-title">
-									<h2>New Event</h2>
+								<div class="row">
+								<div class="col-md-2">
+								<a class="button" href="events">Back</a></div>
+								<div class="col-md-10">
+									<h2>New Event</h2></div>
 								</div>
 								<div class="bubble-line"></div>
 								<div class="post-content comment">
@@ -46,7 +50,7 @@ include('menubar.php');
 					<label for="event_attachment" class="button">
 					Upload
 					</label>
-					<input id="event_attachment" name="event_attachment" type="file" style="display:none;"/>
+					<input id="event_attachment" name="event_attachment" type="file" style="display:none;" accept="image/png, image/jpeg"/>
   
 					</div>
 					<div class="comment-submit">

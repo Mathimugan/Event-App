@@ -1,4 +1,4 @@
-<?php ?>
+	<?php ?>
 	<header id="header">
     <div class="menu-container">
         <div class="container">
@@ -6,22 +6,44 @@
                 <div  class="col-md-7">
                     <nav class="main-nav">
                         <ul>
+						
                             <li>
-                                <a href="index.php">Home</a>
-                            </li>        
-                            <li><a href="about.php">About</a></li>
-                            <li class="current-menu-item"><a href="contact.php">Contact</a></li>
+                                <a href="index">Home</a>
+                            </li> 
+					<?php
+					if (!isset($_SESSION['loggedin']))
+					{
+					?>							
+                            <li><a href="login.php">Login</a></li>
+							
+					<?php
+					}
+					if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+					{
+					?>		<li><a href="admin">Event</a></li>
+							<li><a href="bookings">Bookings</a></li>
+							
+							<?php
+					}
+					?>
                         </ul>
                         <a href="javascript:;" id="close-menu"> <i class="fa fa-close"></i></a>
                     </nav>
                                             </div>
+					<?php
+					if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+					{
+					?>	
                 <div class=" col-md-5 h-search">
                     <div class="head-social">
-                        <a class="socials" href="#">Username</a>
-                        <a class="socials" href="#">Logout</a>
+                        <a class="socials" href="#"><?php echo $_SESSION['user_name']?></a>
+                        <a class="socials" href="logout.php">Logout</a>
                
                     </div>
                 </div>
+				<?php
+				}
+				?>
             </div>
         </div>
     </div>

@@ -4,7 +4,6 @@ session_start();
 if(isset($_POST['submit']))
 {
 $token=mysqli_real_escape_string($db,$_POST['form_token']);
-echo $_SESSION['form_token'];
 if($token == $_SESSION['form_token'])
 {
 $_SESSION['form_token'] = null;
@@ -16,7 +15,7 @@ unlink('uploads/'.$pic_r->refer_name);
 mysqli_query($db,"delete from events where event_id='".$event_id."'");
 }		
 }
-header("location:events.php");
+header("location:events");
 exit();	
 }
 ?>

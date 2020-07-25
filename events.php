@@ -1,5 +1,8 @@
 <?php
 include('connection.php');
+session_start();
+$token=uniqid();
+$_SESSION['form_token']=$token;
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,10 +55,11 @@ include('menubar.php');
 						<a href="view_event.php?id=<?php echo $event['event_id']?>" class="button">View</a>
 											</div>
 											<div class="col-sm-4">
-												<a href="javascript:;" class="button">Edit</a>
+												<a  href="edit_event.php?id=<?php echo $event['event_id']?>" class="button">Edit</a>
 											</div>
 											<div class="col-sm-4">
-												<a href="javascript:;" class="button">Delete</a>
+												<a onClick="deleteEvent('<?php echo $event['event_id']?>')" class="button">Delete</a>
+
 											</div>
 										</div>
 									</div>
@@ -80,13 +84,43 @@ include('menubar.php');
 		</div>
 	</section>
 	
-   
-
+   <!-- Modal-->
+   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Delete Event</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want delete the Event.</p>
+		  <form action="delete_event_action.php" method="POST">
+		  <input type="hidden" id="form_token" name="form_token" value="<?php echo $token?>"/>
+		  <input type="hidden" id="event_id" name="event_id" value="<?php echo $event_id?>"/>
+		  
+        </div>
+        <div class="modal-footer">
+          
+		 <input type="submit" name="submit" value="Submit" class="button"/>
+		 <button type="button" class="button" data-dismiss="modal">Close</button>
+		  </form>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+<!-- Modal-->
     <!--Footer-->
  <?php include('footer.php')?>
  <!--Footer-->
 
-
 </body>
+<script>
+function deleteEvent(event_id)
+{
 
+	$("#myModal").modal('show');
+	$("#event_id").val(event_id);
+}
+</script>
 </html>
