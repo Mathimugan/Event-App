@@ -65,7 +65,7 @@ include('menubar.php');
 					<label for="event_attachment" class="button">
 					Upload
 					</label>
-					<input type="hidden" id="pic_id" name="pic_id" value="1"/>
+					<input type="hidden" id="pic_id" name="pic_id" value="0"/>
 					<input id="event_attachment" name="event_attachment" type="file" style="display:none;"/>
 					<?php
 					}
