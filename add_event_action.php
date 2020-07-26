@@ -1,6 +1,12 @@
 <?php
 include('connection.php');
 session_start();
+if(!isset($_SESSION['user_id']))
+{
+// not logged in
+header('Location: login.php');
+exit();
+}
 if(isset($_POST['submit']))
 {
 $token=mysqli_real_escape_string($db,$_POST['token']);
@@ -11,6 +17,7 @@ $event_title = mysqli_real_escape_string($db,$_POST['event_title']);
 $event_date = mysqli_real_escape_string($db,$_POST['event_date']);
 $event_time = mysqli_real_escape_string($db,$_POST['event_time']);
 $event_description = mysqli_real_escape_string($db,$_POST['event_description']);
+$event_description=trim($event_description);
 mysqli_query($db,"insert into events set event_title='".$event_title."',
 event_date=STR_TO_DATE('".$event_date."','%Y-%m-%d'),
 event_time=STR_TO_DATE('".$event_time."','%H:%i'),event_description='".$event_description."'") or die(mysqli_error($db));
