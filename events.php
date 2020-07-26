@@ -36,7 +36,7 @@ include('menubar.php');
 							<article class="content-item">
 								<div class="entry-media">
 									<div class="post-title">
-										<h3><?php echo $event['event_title']?></h3>
+										<h2><?php echo $event['event_title']?></h2>
 										<div class="entry-date">
 											<ul>
 												<li><?php echo $event['event_date']?></li>
