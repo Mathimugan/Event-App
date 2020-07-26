@@ -1,6 +1,12 @@
 <?php
 include('connection.php');
 session_start();
+if(!isset($_SESSION['user_id']))
+{
+// not logged in
+header('Location: login.php');
+exit();
+}
 $token=uniqid();
 $_SESSION['form_token']=$token;
 ?>
@@ -93,7 +99,7 @@ include('menubar.php');
           <h4 class="modal-title">Delete Event</h4>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete the Event?.</p>
+          <p>Are you sure you want delete the Event?.</p>
 		  <form action="delete_event_action.php" method="POST">
 		  <input type="hidden" id="form_token" name="form_token" value="<?php echo $token?>"/>
 		  <input type="hidden" id="event_id" name="event_id" value="<?php echo $event_id?>"/>
@@ -102,7 +108,7 @@ include('menubar.php');
         <div class="modal-footer">
           
 		 <button type="submit" name="submit"  class="button"/>Submit</button>
-		 <button type="button" class="button" data-dismiss="modal">Close</button>
+		 <button type="button"   class="button" data-dismiss="modal">Close</button>
 		  </form>
         </div>
       </div>

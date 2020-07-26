@@ -2,18 +2,6 @@
 <html>
 <?php
 include('header.php');
-include('connection.php');
-session_start();
-$token=uniqid();
-$_SESSION['form_token']=$token;
-$event_id=$_GET['id'];
- 
-$event_q=mysqli_query($db,"select * from events where event_id='".$event_id."'");
-$event=mysqli_fetch_assoc($event_q);
-$date = date_create($event['event_date']);
-$event_date=date_format($date, 'Y-m-d');
-$time = date_create($event['event_time']);
-$event_time=date_format($time, 'H:i');
 ?>
 <body>
 <?php
@@ -22,65 +10,40 @@ include('menubar.php');
 			<section class="section-content">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-8 col-md-8">	
+					<div class="col-sm-8 col-md-8">
+						
+						
+						
 						<article class="content-item">
 							<div class="entry-media">
 								<div class="post-title">
-									<div class="row">
-								<div class="col-md-2">
-								<a class="button" href="events.php">Back</a></div>
-								<div class="col-md-10">
-									<h2>Edit Event</h2></div>
-								</div>
+									<h2>New Event</h2>
 								</div>
 								<div class="bubble-line"></div>
 								<div class="post-content comment">
-					<form action="edit_event_action.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data" autocomplete="off">
-					<input type="hidden" id="token" name="token" value="<?php echo $token;?>"/> 
-					<input type="hidden" id="event_id" name="event_id" value="<?php echo $event_id;?>"/>
+					<form action="add_event_action.php" method="POST" onsubmit="return validateForm()">
 					<div class="comment-form">
 					<p class="input-name"> Event Title (required) </p>
 					<input type="text" name="event_title" id="event_title" 
-					placeholder="" value="<?php echo $event['event_title']?>">
+					placeholder="" >
 					<p id="title_error"></p>
 					<p class="input-name"> Event Date </p>
-					
-					<input type="date" name="event_date" id="event_date"   
-					value="<?php echo $event_date;?>">
+					<input type="date" name="event_date" id="event_date"   placeholder="">
 					<p id="date_error"></p>
 					<p class="input-name"> Event Time </p>
-					<input type="time" name="event_time" id="event_time" 
-					value="<?php echo $event_time?>">
+					<input type="time" name="event_time" id="event_time" placeholder="">
 					<p id="time_error"></p>
 					<p class="input-name">Event Description</p>
-					<textarea wrap="physical" id="event_description" 
-					name="event_description"><?php echo $event['event_description']?>
+					<textarea placeholder="" id="event_description" 
+					name="event_description">
 					</textarea>
 					<p id="desc_error"></p>
 					<p class="input-name">Event Image</p>
-					<?php
-					if($event['refer_name']=='' || $event['refer_name']==null)
-					{
-					?>
-					<label for="event_attachment" class="button">
+					<label for="file-upload" class="button">
 					Upload
 					</label>
-					<input type="hidden" id="pic_id" name="pic_id" value="1"/>
-					<input id="event_attachment" name="event_attachment" type="file" style="display:none;"/>
-					<?php
-					}
-					else
-					{
-					$src='uploads/'.$event['refer_name'];
-					?>
-					<span id="load_img">
-					<input type="hidden" id="pic_id" name="pic_id" value="1"/>
-					<a href="<?php echo $src?>" target="_blank"><span class="glyphicon glyphicon-file"></span></a>
-					<a class="btn btn-sm btn-danger" onClick="updateImg()">X</a>
-					</span>
-					<?php
-					}
-					?>
+					<input id="file-upload" name="event_attachment" type="file" style="display:none;"/>
+  
 					</div>
 					<div class="comment-submit">
 					<input type="submit" name="submit" class="button" value="Save">
@@ -162,14 +125,6 @@ else
 {
 	return true;
 }
-}
-
-function updateImg()
-{
-$("#load_img").html('<label for="event_attachment" class="button">\
-Upload\</label>\
-<input type="hidden" id="pic_id" name="pic_id" value="0"/>\
-<input id="event_attachment" name="event_attachment" type="file" style="display:none;"/>');	
 }
 </script>
 

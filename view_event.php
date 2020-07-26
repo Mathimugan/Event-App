@@ -27,7 +27,7 @@ include('menubar.php');
 								
 								<div class="row">
 								<div class="col-md-2">
-								<a class="button" href="events">Back</a></div>
+								<a class="button" href="events.php">Back</a></div>
 									<div class="col-md-6"><h2><?php echo $event->event_title?></h2>
 									<div class="entry-date">
 									<ul><li><a><?php echo $event->event_date?></a></li>

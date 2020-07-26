@@ -8,7 +8,7 @@
                         <ul>
 						
                             <li>
-                                <a href="index">Home</a>
+                                <a href="index.php">Home</a>
                             </li> 
 					<?php
 					if (!isset($_SESSION['loggedin']))
@@ -20,8 +20,8 @@
 					}
 					if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
 					{
-					?>		<li><a href="admin">Event</a></li>
-							<li><a href="bookings">Bookings</a></li>
+					?>		<li><a href="events.php">Event</a></li>
+							<li><a href="bookings.php">Bookings</a></li>
 							
 							<?php
 					}

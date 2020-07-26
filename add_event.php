@@ -3,12 +3,6 @@
 <?php
 include('header.php');
 session_start();
-if(!isset($_SESSION['user_id']))
-{
-// not logged in
-header('Location: login.php');
-exit();
-}
 $token=uniqid();
 $_SESSION['form_token']=$token;
 ?>
@@ -28,7 +22,7 @@ include('menubar.php');
 								<div class="post-title">
 								<div class="row">
 								<div class="col-md-2">
-								<a class="button" href="events">Back</a></div>
+								<a class="button" href="events.php">Back</a></div>
 								<div class="col-md-10">
 									<h2>New Event</h2></div>
 								</div>
@@ -48,8 +42,8 @@ include('menubar.php');
 					<input type="time" name="event_time" id="event_time" placeholder="">
 					<p id="time_error"></p>
 					<p class="input-name">Event Description</p>
-					<textarea  id="event_description" 
-					name="event_description" wrap="physical"></textarea>
+					<textarea wrap="physical" id="event_description" 
+					name="event_description"></textarea>
 					<p id="desc_error"></p>
 					<p class="input-name">Event Image</p>
 					<label for="event_attachment" class="button">

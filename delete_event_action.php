@@ -21,7 +21,7 @@ unlink('uploads/'.$pic_r->refer_name);
 mysqli_query($db,"delete from events where event_id='".$event_id."'");
 }		
 }
-header("location:events");
+header("location:events.php");
 exit();	
 }
 ?>

@@ -2,6 +2,12 @@
 include('connection.php');
 session_start();
 $token=uniqid();
+if(!isset($_SESSION['user_id']))
+{
+// not logged in
+header('Location: login.php');
+exit();
+}
 $_SESSION['form_token']=$token;
 ?>
 <!DOCTYPE html>

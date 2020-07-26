@@ -15,14 +15,15 @@ if($token == $_SESSION['form_token'])
 $_SESSION['form_token'] = null;
 $event_title = mysqli_real_escape_string($db,$_POST['event_title']);
 $event_date = mysqli_real_escape_string($db,$_POST['event_date']);
-$event_time = mysqli_real_escape_string($db,$_POST['event_time']);
+$time = date_create($_POST['event_time']);
+$event_time=date_format($time, 'H:i');
 $event_id=mysqli_real_escape_string($db,$_POST['event_id']);
 $event_description = mysqli_real_escape_string($db,$_POST['event_description']);
-$event_description=trim($event_description);
+$event_description = trim($event_description );
 $pic_id = mysqli_real_escape_string($db,$_POST['pic_id']);
 mysqli_query($db,"update events set event_title='".$event_title."',
 event_date=STR_TO_DATE('".$event_date."','%Y-%m-%d'),
-event_time=STR_TO_DATE('".$event_time."','%H:%i'),event_description='".$event_description."' where event_id='".$event_id."'") or die(mysqli_error($db));
+event_time='".$event_time."',event_description='".$event_description."' where event_id='".$event_id."'") or die(mysqli_error($db));
 
 
 if($_POST['pic_id']=='0'){

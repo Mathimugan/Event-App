@@ -1066,7 +1066,6 @@ form textarea:-ms-input-placeholder {
 .button {
   display: inline-block;
   text-align: center;
-  outline:none !important;
   border-radius: 26px;
   padding: 10px 20px;
   background-color: #ffb661;
@@ -3832,13 +3831,7 @@ button.backbutton:focus {
     font-family: 'Montserrat';
     font-size: 36px;
 }
-.modal input{
-	width: 320px;
-    max-width: 100%;
-    border: 1px solid #dddddd;
-    outline: none;
-    margin-bottom: -5px;
-}
+	
 input.button:focus,button.backbutton:focus{outline:none;}
 @media (max-width: 639px){
 article.content-item .about-title{padding:60px 30px 24px 30px;}

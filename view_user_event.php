@@ -73,7 +73,7 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
                         <ul>
 						
                             <li>
-                                <a href="index">Home</a>
+                                <a href="index.php">Home</a>
                             </li>        
                             
             </div>
@@ -93,7 +93,7 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 								
 								<div class="row">
 								<div class="col-md-2">
-								<a class="button" href="index">Back</a></div>
+								<a class="button" href="index.php">Back</a></div>
 									<div class="col-md-6"><h2><?php echo $event->event_title?></h2>
 									<div class="entry-date">
 									<ul><li><a><?php echo $event->event_date?></a></li>
@@ -156,7 +156,7 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
           <h4 class="modal-title">Register Event</h4>
         </div>
         <div class="modal-body">
-		  <form action="add_booking.php" method="POST">
+		  <form action="add_booking.php" method="POST" autocomplete="off">
 		  <input type="hidden" id="form_token" name="form_token" value="<?php echo $token?>"/>
 		  <input type="hidden" id="book_event_id" name="book_event_id" value="<?php echo $_GET['id']?>"/>
 		  <div class="comment-form">
@@ -167,12 +167,11 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 					<input type="text" class="modal_input" name="user_email" id="user_email" placeholder="" >
 					
 					</div>
-					
 		  
         </div>
         <div class="modal-footer">
           
-		 <button type="submit" name="submit"  class="button"/>Submit</button>
+		 <button type="submit" name="submit" class="button">Submit</button>
 		 <button type="button" class="button" data-dismiss="modal">Close</button>
 		  </form>
         </div>

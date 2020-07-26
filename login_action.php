@@ -20,10 +20,10 @@ if(isset($_POST['submit'])){
 					$user_group = mysqli_fetch_assoc($select_user_group_q);
 					if($user_group['group_name']=='Admin')
 					{
-					$type='admin';	
+					$type='events.php';	
 					}
 					else{
-					$type='events';	
+					$type='index.php';	
 					}
 					header("location:".$type."");
 				}
