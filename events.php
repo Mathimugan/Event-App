@@ -93,7 +93,7 @@ include('menubar.php');
           <h4 class="modal-title">Delete Event</h4>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want delete the Event.</p>
+          <p>Are you sure you want to delete the Event???.</p>
 		  <form action="delete_event_action.php" method="POST">
 		  <input type="hidden" id="form_token" name="form_token" value="<?php echo $token?>"/>
 		  <input type="hidden" id="event_id" name="event_id" value="<?php echo $event_id?>"/>
