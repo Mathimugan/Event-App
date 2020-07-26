@@ -11,6 +11,7 @@ if(isset($_POST['submit'])){
 		$hashed = $select_user['password'];
 		if($hashed != null && $password != null){
 			$check_password = password_verify ($password,$hashed);
+			echo $check_password;
 			if($check_password){
 				if($select_user != null){
 					$_SESSION['user_name'] = $select_user['name'];

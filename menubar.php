@@ -1,4 +1,22 @@
-	<?php ?>
+	<?php
+	include('connection.php');
+	$is_admin=false;
+	if (isset($_SESSION['loggedin']))
+	{
+	$user_id=$_SESSION['user_id'];
+	$group_q=mysqli_query($db,"select * from user_group where user_id='".$user_id."'");
+	$group=mysqli_fetch_object($group_q);
+	
+	if($group->group_name=='Admin')
+	{
+		$is_admin=true;
+	}
+	else
+	{
+		$is_admin=false;
+	}
+	}
+	?>
 	<header id="header">
     <div class="menu-container">
         <div class="container">
@@ -18,12 +36,18 @@
 							
 					<?php
 					}
-					if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+					if ($is_admin && isset($_SESSION['loggedin']))
 					{
-					?>		<li><a href="events.php">Event</a></li>
-							<li><a href="bookings.php">Bookings</a></li>
+					?>
+					<li><a href="events.php">Event</a></li>
+					<?php
+					}
+					if(!$is_admin && isset($_SESSION['loggedin']))
+					{
+					?>
+					<li><a href="bookings.php">Bookings</a></li>
 							
-							<?php
+					<?php
 					}
 					?>
                         </ul>

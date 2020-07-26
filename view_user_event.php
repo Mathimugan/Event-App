@@ -53,10 +53,10 @@ function statusChangeCallback(response)
 FB.api('/me?fields=first_name,last_name,email', function(response) {
       console.log('Successful login for: ' + response.name);
 	  $("#myModal").modal("show");
-	  setTimeout(function(){document.getElementById('user_name').value =response.first_name;
+	  /*setTimeout(function(){document.getElementById('user_name').value =response.first_name;
        
 	document.getElementById('user_email').value =response.email;
-       }, 1000);
+       }, 1000);*/
      
     });	
 }
@@ -153,7 +153,7 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Register Event</h4>
+          <h4 class="modal-title">Register Account</h4>
         </div>
         <div class="modal-body">
 		  <form action="add_booking.php" method="POST" autocomplete="off">
@@ -161,11 +161,13 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 		  <input type="hidden" id="book_event_id" name="book_event_id" value="<?php echo $_GET['id']?>"/>
 		  <div class="comment-form">
 					<p class="input-name"> Username </p>
-					<input type="text" name="user_name" class="modal_input" id="user_name" placeholder="" >
+					<input type="text" name="user_name" class="modal_input" id="user_name" placeholder="" required>
 				
 					<p class="input-name"> Email </p>
-					<input type="text" class="modal_input" name="user_email" id="user_email" placeholder="" >
+					<input type="text" class="modal_input" name="user_email" id="user_email" placeholder="" required>
 					
+					<p class="input-name"> Password </p>
+					<input type="text" class="modal_input" name="user_password" id="user_password" placeholder="" required>
 					</div>
 		  
         </div>
