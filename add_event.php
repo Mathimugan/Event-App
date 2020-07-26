@@ -34,7 +34,7 @@ include('menubar.php');
 								</div>
 								<div class="bubble-line"></div>
 								<div class="post-content comment">
-					<form action="add_event_action.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+					<form action="add_event_action.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data" autocomplete="off">
 					<input type="hidden" id="token" name="token" value="<?php echo $token;?>"/> 
 					<div class="comment-form">
 					<p class="input-name"> Event Title (required) </p>

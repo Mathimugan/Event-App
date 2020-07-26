@@ -41,7 +41,7 @@ include('menubar.php');
 								</div>
 								<div class="bubble-line"></div>
 								<div class="post-content comment">
-					<form action="edit_event_action.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+					<form action="edit_event_action.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data" autocomplete="off">
 					<input type="hidden" id="token" name="token" value="<?php echo $token;?>"/> 
 					<input type="hidden" id="event_id" name="event_id" value="<?php echo $event_id;?>"/>
 					<div class="comment-form">
