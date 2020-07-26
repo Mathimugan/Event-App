@@ -59,10 +59,9 @@ include('menubar.php');
 					value="<?php echo $event_time?>">
 					<p id="time_error"></p>
 					<p class="input-name">Event Description</p>
-					<textarea placeholder="" id="event_description" 
-					name="event_description">
-					<?php echo $event['event_description']?>
-					</textarea>
+					<textarea  id="event_description" 
+					name="event_description" wrap="physical">
+					<?php echo $event['event_description']?></textarea>
 					<p id="desc_error"></p>
 					<p class="input-name">Event Image</p>
 					<?php

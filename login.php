@@ -34,6 +34,7 @@ include('menubar.php');
 					<form action="login_action.php" method="POST"  enctype="multipart/form-data" autocomplete="off">
 					<input type="hidden" id="token" name="token" value="<?php echo $token;?>"/> 
 					<div class="comment-form">
+					
 					<p class="input-name"> Email Id (required) </p>
 					<input type="email" name="email_id" id="email_id" 
 					placeholder="" required>

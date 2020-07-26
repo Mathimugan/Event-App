@@ -48,9 +48,8 @@ include('menubar.php');
 					<input type="time" name="event_time" id="event_time" placeholder="">
 					<p id="time_error"></p>
 					<p class="input-name">Event Description</p>
-					<textarea placeholder="" id="event_description" 
-					name="event_description">
-					</textarea>
+					<textarea  id="event_description" 
+					name="event_description" wrap="physical"></textarea>
 					<p id="desc_error"></p>
 					<p class="input-name">Event Image</p>
 					<label for="event_attachment" class="button">

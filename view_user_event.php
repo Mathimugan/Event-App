@@ -167,6 +167,7 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 					<input type="text" class="modal_input" name="user_email" id="user_email" placeholder="" >
 					
 					</div>
+					
 		  
         </div>
         <div class="modal-footer">
