@@ -24,7 +24,7 @@
                 <div  class="col-md-7">
                     <nav class="main-nav">
                         <ul>
-						
+							<li><h2>EventApp</h2></li>
                             <li>
                                 <a href="index.php">Home</a>
                             </li> 

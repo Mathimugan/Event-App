@@ -92,11 +92,9 @@ if($next_page || $current_page > 1){
 ?>
 
     </div>
-</div>	
-			
-	
 	</div>
 	
+	</div>
 	</div>
 	</section>
 <!--Footer-->

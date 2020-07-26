@@ -3,6 +3,7 @@
 <?php
 include('connection.php');
 include('header.php');
+session_start();
 $id=$_GET['id'];
 $event_q=mysqli_query($db,"select *,DATE_FORMAT(event_date,'%M %D,%Y') as event_date,
 DATE_FORMAT(event_time,'%h:%i 	%p') as event_time from events where event_id='".$id."'");
@@ -64,26 +65,11 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 <body>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=787298181442447&autoLogAppEvents=1" nonce="M4jrJ9V6"></script>
-<header id="header">
-    <div class="menu-container">
-        <div class="container">
-            <div class="row">
-                <div  class="col-md-7">
-                    <nav class="main-nav">
-                        <ul>
-						
-                            <li>
-                                <a href="index.php">Home</a>
-                            </li>        
-                            
-            </div>
-        </div>
-    </div>
-</header>
+<?php include('menubar.php')?>
 			<section class="section-content">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-8 col-md-8">
+					<div class="col-sm-12 col-md-12">
 						
 						
 						
@@ -131,10 +117,23 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
 							<div class="post-footer">
                 <div class="row">
                     <div class="col-sm-5">
-                        
+					<h2>Book Now</h2>
+                        <?php
+						
+						if(!isset($_SESSION['user_id']))
+							{
+							?>
 							<div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""  scope="public_profile,email"
 							  onlogin="checkLoginState();"></div>
-						
+							  <?php
+							  }
+							  else
+							  {
+							  ?>
+							  <a class="button" onClick="bookEvent()">Book Event</a>
+							  <?php
+							  }
+							  ?>
                     </div>
                    
                 </div>
@@ -180,6 +179,34 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
       </div>
       </div>
       </div>
+	  
+	  
+	  
+	  
+	  
+	  <!-- Modal-->
+   <div class="modal fade" id="bookEvent" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Book Event</h4>
+        </div>
+        <div class="modal-body">
+		<p>Are you sure u want to book this event???</p>
+		  <form action="register_booking.php" method="POST" autocomplete="off">
+		  <input type="hidden" id="form_token" name="form_token" value="<?php echo $token?>"/>
+		  <input type="hidden" id="book_event_id" name="book_event_id" value="<?php echo $_GET['id']?>"/>
+		  <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']?>"/>
+        </div>
+        <div class="modal-footer">
+		 <button type="submit" name="submit" class="button">Submit</button>
+		 <button type="button" class="button" data-dismiss="modal">Close</button>
+		  </form>
+        </div>
+      </div>
+      </div>
+      </div>
 	</div>
 
     
@@ -187,6 +214,10 @@ FB.api('/me?fields=first_name,last_name,email', function(response) {
  <?php include('footer.php')?>
  <!--Footer-->
 </body>
-
-
+<script>
+function bookEvent()
+{
+$("#bookEvent").modal("show");	
+}
+</script>
 </html>

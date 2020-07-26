@@ -1479,7 +1479,7 @@ form textarea:-ms-input-placeholder {
 
 .sidebar .widget .widget-recent img {
   width: 100%;
-  height: 140px;
+  height: auto;
 }
 
 .sidebar .widget .widget-recent h4 {

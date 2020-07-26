@@ -1,4 +1,4 @@
 <?php
-$db = new mysqli('localhost','root','Demo@1234567890');
+$db = new mysqli('localhost','root','');
 mysqli_select_db($db,'task');
 ?>
