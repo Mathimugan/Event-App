@@ -33,6 +33,7 @@ include('menubar.php');
 			<th>Booked Date</th>
 			<th>Event Name</th>
 			<th>Event Date</th>
+			<th>User Name</th>	
 			</tr>
 			</thead>
 			<tbody>
