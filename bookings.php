@@ -38,14 +38,24 @@ include('menubar.php');
 			</thead>
 			<tbody>
 			<?php
-			$booking_q=mysqli_query($db,"select *,DATE_FORMAT(created_date,'%d/%m/%Y') as booked_date from bookings where user_id='".$_SESSION['user_id']."' order by booking_id desc");
+			if($is_admin)
+			{
+			$booking_q=mysqli_query($db,"select *,DATE_FORMAT(created_date,'%d/%m/%Y') as booked_date from bookings where 1 order by booking_id desc");
+			}
+			else 
+			{
+			$booking_q=mysqli_query($db,"select *,DATE_FORMAT(created_date,'%d/%m/%Y') as booked_date from bookings where user_id='".$_SESSION['user_id']."' order by booking_id desc");	
+			}	
 			$i=0;
 			while($booking=mysqli_fetch_assoc($booking_q))
 			{
 			$i++;
 			$event_q=mysqli_query($db,"select *,DATE_FORMAT(event_date,'%d/%m/%Y') as event_date from events where 
 			event_id='".$booking['event_id']."'");
-			$event=mysqli_fetch_assoc($event_q)			
+			$event=mysqli_fetch_assoc($event_q);
+			$user_q=mysqli_query($db,"select * from users where 
+			user_id='".$booking['user_id']."'");
+			$user_r=mysqli_fetch_assoc($user_q);	
 			?>
 			<tr>
 			<td><?php echo $i?></td>
@@ -53,6 +63,7 @@ include('menubar.php');
 			<td><?php echo $booking['booked_date']?></td>
 			<td><?php echo $event['event_title']?></td>
 			<td><?php echo $event['event_date']?></td>
+			<td><?php echo strtoupper($user_r['name'])?></td>	
 			</tr>
 			<?php
 			}
